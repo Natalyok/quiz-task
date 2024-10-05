@@ -7,8 +7,15 @@ const resultHeading = document.querySelector('.result-heading')
 let overallCounter = 0
 let correctCounter = 0
 let wrongCounter = 0
+let answer = 0
 
-function countAnswers(answer, button) {
+const buttons = document.querySelectorAll(".answer-row button")
+
+buttons.forEach((button) => {
+    button.addEventListener('click', countAnswers(button))
+})
+
+function countAnswers(button) {
     return function () {
         overallCounter += 1
 
@@ -30,11 +37,8 @@ function showResult() {
 }
 
 function generateCorrectButton(answer) {
-    const buttons = document.querySelectorAll(".answer-row button")
 
-    buttons.forEach((button) => {
-        button.addEventListener('click', countAnswers(answer, button))
-    })
+
 
 
     buttons.forEach((button) => {
@@ -75,7 +79,6 @@ function generatOuastion() {
     const number1 = getRandomInt(50)
     const number2 = getRandomInt(50)
     const sign = lol()
-    let answer = ''
 
     if (sign === '+') {
         answer = number1 + number2
